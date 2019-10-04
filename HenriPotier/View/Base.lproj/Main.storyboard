@@ -26,29 +26,45 @@
             </objects>
             <point key="canvasLocation" x="1929" y="434"/>
         </scene>
-        <!--Livres-->
+        <!--Boutique-->
         <scene sceneID="7il-Wt-xkf">
             <objects>
-                <viewController id="0aZ-DE-gk6" customClass="ViewController" customModule="HenriPotier" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0aZ-DE-gk6" customClass="BookListController" customModule="HenriPotier" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qST-LJ-BH9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CCy-kf-Kz4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CCy-kf-Kz4">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookCell" rowHeight="119" id="ryZ-H9-21I">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookCell" rowHeight="119" id="ryZ-H9-21I" customClass="BookCell" customModule="HenriPotier" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="119"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ryZ-H9-21I" id="d07-Ai-Qmb">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="118.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2in-x2-Hen" customClass="BookView" customModule="HenriPotier" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="5" width="355" height="108.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2in-x2-Hen" firstAttribute="top" secondItem="d07-Ai-Qmb" secondAttribute="top" constant="5" id="4TB-i8-hHn"/>
+                                                <constraint firstAttribute="trailing" secondItem="2in-x2-Hen" secondAttribute="trailing" constant="10" id="L9g-A7-1hc"/>
+                                                <constraint firstAttribute="bottom" secondItem="2in-x2-Hen" secondAttribute="bottom" constant="5" id="bo6-ww-SPf"/>
+                                                <constraint firstItem="2in-x2-Hen" firstAttribute="leading" secondItem="d07-Ai-Qmb" secondAttribute="leading" constant="10" id="suX-mS-RZw"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookView" destination="2in-x2-Hen" id="X1K-7e-tun"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="0aZ-DE-gk6" id="S2g-yI-KcA"/>
+                                    <outlet property="dataSource" destination="0aZ-DE-gk6" id="kCS-oZ-zBs"/>
+                                    <outlet property="delegate" destination="0aZ-DE-gk6" id="dLA-di-obJ"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -62,11 +78,118 @@
                         <viewLayoutGuide key="safeArea" id="rOA-jT-QTT"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Livres" image="books" id="v6I-2q-q1M"/>
-                    <navigationItem key="navigationItem" id="Rcp-z7-tFk"/>
+                    <navigationItem key="navigationItem" title="Boutique" id="Rcp-z7-tFk">
+                        <barButtonItem key="backBarButtonItem" title="Retour" id="tiU-Ry-BVw"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="CCy-kf-Kz4" id="37a-YW-p7E"/>
+                        <segue destination="K49-GP-aWQ" kind="show" identifier="BookDetailSegue" id="Odk-fe-lEG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="115-DC-nXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2904.8000000000002" y="-235.23238380809596"/>
+        </scene>
+        <!--Détail-->
+        <scene sceneID="lYb-bb-AI5">
+            <objects>
+                <viewController title="Détail" id="K49-GP-aWQ" customClass="BookDetailController" customModule="HenriPotier" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sb1-xN-xta">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zm7-Kn-avZ">
+                                <rect key="frame" x="10" y="74" width="355" height="544"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FGX-32-sHm">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="239.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ds-QJ-4cS" customClass="BookView" customModule="HenriPotier" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="120"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="P6g-E0-53P"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g69-22-UDS">
+                                                <rect key="frame" x="0.0" y="120" width="355" height="119.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iql-5r-Cbj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="60"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="My3-Jq-LjC">
+                                                                <rect key="frame" x="20" y="10" width="315" height="40"/>
+                                                                <color key="backgroundColor" red="0.20000000000000001" green="0.76862745099999996" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="My3-Jq-LjC" firstAttribute="top" secondItem="iql-5r-Cbj" secondAttribute="top" constant="10" id="2tu-e2-nTa"/>
+                                                            <constraint firstAttribute="trailing" secondItem="My3-Jq-LjC" secondAttribute="trailing" constant="20" id="CB7-Oe-CD9"/>
+                                                            <constraint firstItem="My3-Jq-LjC" firstAttribute="leading" secondItem="iql-5r-Cbj" secondAttribute="leading" constant="20" id="SB5-jv-pao"/>
+                                                            <constraint firstAttribute="height" constant="60" id="wRc-Zu-Kvz"/>
+                                                            <constraint firstAttribute="bottom" secondItem="My3-Jq-LjC" secondAttribute="bottom" constant="10" id="zlg-dC-2Pp"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFL-e5-7tt">
+                                                        <rect key="frame" x="0.0" y="65" width="355" height="27"/>
+                                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="23"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3g-Y7-DWD">
+                                                        <rect key="frame" x="0.0" y="97" width="355" height="22.5"/>
+                                                        <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="18"/>
+                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="g69-22-UDS" firstAttribute="leading" secondItem="FGX-32-sHm" secondAttribute="leading" id="Gyf-TG-tw5"/>
+                                            <constraint firstItem="g69-22-UDS" firstAttribute="top" secondItem="1ds-QJ-4cS" secondAttribute="bottom" id="fZk-he-xH6"/>
+                                            <constraint firstAttribute="trailing" secondItem="g69-22-UDS" secondAttribute="trailing" id="rSL-aG-8XJ"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="FGX-32-sHm" secondAttribute="bottom" id="0rW-TE-9oh"/>
+                                    <constraint firstItem="FGX-32-sHm" firstAttribute="top" secondItem="Zm7-Kn-avZ" secondAttribute="top" id="1RN-hK-Bnr"/>
+                                    <constraint firstAttribute="trailing" secondItem="FGX-32-sHm" secondAttribute="trailing" id="3F6-PI-1mG"/>
+                                    <constraint firstItem="FGX-32-sHm" firstAttribute="width" secondItem="Zm7-Kn-avZ" secondAttribute="width" id="GEn-YY-sJZ"/>
+                                    <constraint firstItem="FGX-32-sHm" firstAttribute="leading" secondItem="Zm7-Kn-avZ" secondAttribute="leading" id="alZ-Yv-Thr"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zm7-Kn-avZ" firstAttribute="leading" secondItem="o2N-O4-T0x" secondAttribute="leading" constant="10" id="Kbp-qz-nrR"/>
+                            <constraint firstItem="o2N-O4-T0x" firstAttribute="trailing" secondItem="Zm7-Kn-avZ" secondAttribute="trailing" constant="10" id="WNv-7L-12M"/>
+                            <constraint firstItem="Zm7-Kn-avZ" firstAttribute="top" secondItem="o2N-O4-T0x" secondAttribute="top" constant="10" id="cMP-TD-N5I"/>
+                            <constraint firstItem="o2N-O4-T0x" firstAttribute="bottom" secondItem="Zm7-Kn-avZ" secondAttribute="bottom" id="qvD-49-383"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="o2N-O4-T0x"/>
+                    </view>
+                    <connections>
+                        <outlet property="addToCartButton" destination="My3-Jq-LjC" id="dgd-zv-7gB"/>
+                        <outlet property="bookView" destination="1ds-QJ-4cS" id="zTj-cA-QGM"/>
+                        <outlet property="synopsisDetailLabel" destination="h3g-Y7-DWD" id="NeU-b8-DlJ"/>
+                        <outlet property="synopsisTitleLabel" destination="EFL-e5-7tt" id="YRJ-RZ-a3d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VcI-dN-TQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3872.8000000000002" y="-235.23238380809596"/>
         </scene>
         <!--Livres-->
         <scene sceneID="vjD-T8-Ary">
@@ -76,6 +199,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gbo-GQ-5gL">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.20000000000000001" green="0.76862745099999996" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="0aZ-DE-gk6" kind="relationship" relationship="rootViewController" id="EU7-iJ-uQX"/>
@@ -109,4 +235,5 @@
         <image name="basket" width="25" height="25"/>
         <image name="books" width="25" height="25"/>
     </resources>
+    <color key="tintColor" red="0.20000000000000001" green="0.76862745099999996" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
 </document>
