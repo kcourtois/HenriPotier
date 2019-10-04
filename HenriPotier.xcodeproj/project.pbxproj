@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		9EF0AB822345DFC40087C050 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF0AB802345DFC40087C050 /* Main.storyboard */; };
 		9EF0AB842345DFC60087C050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EF0AB832345DFC60087C050 /* Assets.xcassets */; };
 		9EF0AB872345DFC60087C050 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF0AB852345DFC60087C050 /* LaunchScreen.storyboard */; };
-		9EF0AB922345DFC70087C050 /* HenriPotierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0AB912345DFC70087C050 /* HenriPotierTests.swift */; };
 		9EF0ABA123460BCE0087C050 /* BookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF0ABA023460BCE0087C050 /* BookView.xib */; };
 		9EF0ABA5234613450087C050 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABA4234613450087C050 /* BookService.swift */; };
 		9EF0ABA7234630830087C050 /* BookListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABA6234630830087C050 /* BookListController.swift */; };
@@ -20,6 +19,8 @@
 		9EF0ABAB2346317C0087C050 /* CartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABAA2346317C0087C050 /* CartController.swift */; };
 		9EF0ABAE234755DB0087C050 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABAD234755DB0087C050 /* BookCell.swift */; };
 		9EF0ABB0234757010087C050 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABAF234757010087C050 /* BookView.swift */; };
+		9EF0ABB22347B92F0087C050 /* DiscountCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABB12347B92F0087C050 /* DiscountCalculator.swift */; };
+		9EF0ABB423480CD80087C050 /* DiscountCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABB323480CD80087C050 /* DiscountCalculatorTests.swift */; };
 		C76FA2E75159CB59FF458667 /* Pods_HenriPotier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D065A6CFE4322960FB53F7D6 /* Pods_HenriPotier.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +45,6 @@
 		9EF0AB862345DFC60087C050 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9EF0AB882345DFC60087C050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EF0AB8D2345DFC70087C050 /* HenriPotierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HenriPotierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9EF0AB912345DFC70087C050 /* HenriPotierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HenriPotierTests.swift; sourceTree = "<group>"; };
 		9EF0AB932345DFC70087C050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EF0ABA023460BCE0087C050 /* BookView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookView.xib; sourceTree = "<group>"; };
 		9EF0ABA4234613450087C050 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
@@ -53,6 +53,8 @@
 		9EF0ABAA2346317C0087C050 /* CartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartController.swift; sourceTree = "<group>"; };
 		9EF0ABAD234755DB0087C050 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		9EF0ABAF234757010087C050 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
+		9EF0ABB12347B92F0087C050 /* DiscountCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCalculator.swift; sourceTree = "<group>"; };
+		9EF0ABB323480CD80087C050 /* DiscountCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCalculatorTests.swift; sourceTree = "<group>"; };
 		B5770C4E727D6E954F2B94C5 /* Pods-HenriPotier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotier.release.xcconfig"; path = "Target Support Files/Pods-HenriPotier/Pods-HenriPotier.release.xcconfig"; sourceTree = "<group>"; };
 		C85F80D011840C87E3854D31 /* Pods-HenriPotierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotierTests.release.xcconfig"; path = "Target Support Files/Pods-HenriPotierTests/Pods-HenriPotierTests.release.xcconfig"; sourceTree = "<group>"; };
 		D065A6CFE4322960FB53F7D6 /* Pods_HenriPotier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HenriPotier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +88,6 @@
 				7852E97412CC0DEC51FF6C7D /* Pods-HenriPotierTests.debug.xcconfig */,
 				C85F80D011840C87E3854D31 /* Pods-HenriPotierTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -133,8 +134,8 @@
 		9EF0AB902345DFC70087C050 /* HenriPotierTests */ = {
 			isa = PBXGroup;
 			children = (
-				9EF0AB912345DFC70087C050 /* HenriPotierTests.swift */,
 				9EF0AB932345DFC70087C050 /* Info.plist */,
+				9EF0ABB323480CD80087C050 /* DiscountCalculatorTests.swift */,
 			);
 			path = HenriPotierTests;
 			sourceTree = "<group>";
@@ -143,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				9EF0ABA4234613450087C050 /* BookService.swift */,
+				9EF0ABB12347B92F0087C050 /* DiscountCalculator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,6 +374,7 @@
 				9EF0ABAB2346317C0087C050 /* CartController.swift in Sources */,
 				9EF0AB7D2345DFC40087C050 /* AppDelegate.swift in Sources */,
 				9EF0ABB0234757010087C050 /* BookView.swift in Sources */,
+				9EF0ABB22347B92F0087C050 /* DiscountCalculator.swift in Sources */,
 				9EF0ABA9234630A50087C050 /* BookDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,7 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EF0AB922345DFC70087C050 /* HenriPotierTests.swift in Sources */,
+				9EF0ABB423480CD80087C050 /* DiscountCalculatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
