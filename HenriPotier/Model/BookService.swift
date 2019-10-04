@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 struct BookData: Codable {
     let isbn: String
@@ -17,55 +18,35 @@ struct BookData: Codable {
 }
 
 class BookService {
-    private var bookSession: URLSession
-    private var task: URLSessionDataTask?
-
-    //Init used for tests
-    init(bookSession: URLSession = URLSession(configuration: .default)) {
-        self.bookSession = bookSession
-    }
-
     //Request to Henri Potier API, to retrieve books data
     func getBooks(callback: @escaping (Bool, [BookData]?) -> Void) {
+        //Create url for Henri Potier API
+        let URL: String = "http://henri-potier.xebia.fr/books"
 
-        let components = URLComponents(string: "http://henri-potier.xebia.fr/books")
-
-        //create url var from component
-        guard let url = components?.url else {
-            callback(false, nil)
-            return
-        }
-
-        //set request as GET
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-
-        task?.cancel()
-        task = bookSession.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
-                //check if there are errors, and if data is not nil
-                guard let data = data, error == nil else {
+        //Create request to fetch JSON
+        Alamofire.request(URL, method: .get, parameters: nil)
+            .validate()
+            .responseJSON { response in
+                //Check if request was successful
+                guard response.result.isSuccess else {
                     callback(false, nil)
                     return
                 }
 
-                //check if response status code isn't 200 (error)
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                //Check if data is not empty
+                guard let data = response.data else {
                     callback(false, nil)
                     return
                 }
 
-                //try to decode JSON to an object
+                //Try to parse data into JSON
                 guard let responseJSON = try? JSONDecoder().decode([BookData].self, from: data) else {
                     callback(false, nil)
-                    print("error4")
                     return
                 }
 
-                //callback to send the decoded objects
+                //If everything is OK, callback with success and data
                 callback(true, responseJSON)
-            }
         }
-        task?.resume()
     }
 }

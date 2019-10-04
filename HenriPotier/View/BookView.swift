@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import AlamofireImage
+
 //View that is used in BookCell, with the title of the book, the price and the cover
 class BookView: UIView {
     @IBOutlet weak var coverImgView: UIImageView!
@@ -32,6 +34,10 @@ class BookView: UIView {
     func setView(book: BookData) {
         titleLabel.text = book.title
         priceLabel.text = "\(book.price) €"
+        guard let url = URL(string: book.cover) else {
+            return
+        }
+        coverImgView.af_setImage(withURL: url)
     }
 
     //Get class name and turn it to a string
