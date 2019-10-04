@@ -2,8 +2,11 @@ language: swift
 osx_image: xcode10.2
 install:
   - ./install_swiftlint.sh
+before_install:
+  - pod deintegrate
+  - pod update
 script:
   - swiftlint
-  - xcodebuild -scheme HenriPotier -project HenriPotier.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2' build test -quiet
+  - xcodebuild -scheme HenriPotier -workspace HenriPotier.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=12.2' build test -quiet
 after_success:
   - bash <(curl -s https://codecov.io/bash)
