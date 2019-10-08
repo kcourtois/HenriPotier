@@ -16,8 +16,8 @@ class DiscountCalculatorTests: XCTestCase {
 
     override func setUp() {
         calculator = DiscountCalculator()
-        books = [BookData(isbn: "", title: "", price: 35, cover: "", synopsis: []),
-                 BookData(isbn: "", title: "", price: 30, cover: "", synopsis: [])]
+        books = [BookData(isbn: "", title: "", price: 35, cover: "", synopsis: [], quantity: 1),
+                 BookData(isbn: "", title: "", price: 30, cover: "", synopsis: [], quantity: 1)]
     }
 
     func testGivenInitialPriceWhenApplyingMinusDiscountThenAssertShouldBeTrue() {
@@ -33,5 +33,15 @@ class DiscountCalculatorTests: XCTestCase {
     func testGivenInitialPriceWhenApplyingSliceDiscountThenAssertShouldBeTrue() {
         let finalPrice = calculator.slice(sliceValue: 30, value: 5, books: books)
         XCTAssertEqual(finalPrice, 55)
+    }
+
+    func testGivenNilSliceWhenApplyingSliceDiscountThenAssertShouldBeTrue() {
+        let finalPrice = calculator.slice(sliceValue: nil, value: 5, books: books)
+        XCTAssertEqual(finalPrice, 65)
+    }
+
+    func testGivenBooksWhenCalculatingInitialPriceThenAssertShouldBeTrue() {
+        let finalPrice = calculator.initialPrice(books: books)
+        XCTAssertEqual(finalPrice, 65)
     }
 }

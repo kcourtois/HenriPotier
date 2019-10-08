@@ -1,36 +1,39 @@
 //
-//  BookService.swift
+//  DiscountService.swift
 //  HenriPotier
 //
-//  Created by Kévin Courtois on 03/10/2019.
+//  Created by Kévin Courtois on 05/10/2019.
 //  Copyright © 2019 Kévin Courtois. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-struct BookData: Codable, Equatable {
-    let isbn: String
-    let title: String
-    let price: Int
-    let cover: String
-    let synopsis: [String]
-    var quantity: Int?
-
-    func getSynopsis() -> String {
-        var str = ""
-        for text in synopsis {
-            str += "\(text)\n\n"
-        }
-        return str
-    }
+struct DiscountRequest: Codable {
+    let offers: [DiscountData]
 }
 
-class BookService {
-    //Request to Henri Potier API, to retrieve books data
-    func getBooks(callback: @escaping (Bool, [BookData]?) -> Void) {
+struct DiscountData: Codable {
+    let type: DiscountType
+    let sliceValue: Float?
+    let value: Float
+}
+
+enum DiscountType: String, Codable {
+    case percentage, minus, slice
+}
+
+class DiscountService {
+    //Request to Henri Potier API, to retrieve discount data
+    func getDiscount(books: [BookData], callback: @escaping (Bool, [DiscountData]?) -> Void) {
         //Create url for Henri Potier API
-        let url: String = "http://henri-potier.xebia.fr/books"
+        var url: String = "http://henri-potier.xebia.fr/books/"
+
+        for index in 0..<books.count-1 {
+            url += "\(books[index].isbn),"
+        }
+
+        url += "\(books[books.count-1].isbn)/commercialOffers"
 
         //Create request to fetch JSON
         Alamofire.request(url, method: .get, parameters: nil)
@@ -49,13 +52,13 @@ class BookService {
                 }
 
                 //Try to parse data into JSON
-                guard let responseJSON = try? JSONDecoder().decode([BookData].self, from: data) else {
+                guard let responseJSON = try? JSONDecoder().decode(DiscountRequest.self, from: data) else {
                     callback(false, nil)
                     return
                 }
 
                 //If everything is OK, callback with success and data
-                callback(true, responseJSON)
+                callback(true, responseJSON.offers)
         }
     }
 }

@@ -10,22 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Panier-->
-        <scene sceneID="mth-QP-lMK">
-            <objects>
-                <viewController id="acy-IC-9c5" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gyA-q2-XCP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="pm9-Q6-7Qv"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Panier" image="basket" id="8yd-6H-SR8"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pb1-Ng-peR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1929" y="434"/>
-        </scene>
         <!--Boutique-->
         <scene sceneID="7il-Wt-xkf">
             <objects>
@@ -88,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="115-DC-nXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2904.8000000000002" y="-235.23238380809596"/>
+            <point key="canvasLocation" x="2881" y="-235"/>
         </scene>
         <!--Détail-->
         <scene sceneID="lYb-bb-AI5">
@@ -129,6 +113,9 @@
                                                                         <integer key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addToCart" destination="K49-GP-aWQ" eventType="touchUpInside" id="Aqe-Ic-b4l"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -189,7 +176,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VcI-dN-TQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3872.8000000000002" y="-235.23238380809596"/>
+            <point key="canvasLocation" x="3828" y="-235"/>
+        </scene>
+        <!--Panier-->
+        <scene sceneID="vfe-FF-7VC">
+            <objects>
+                <navigationController id="Yrx-2s-oTg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Panier" image="basket" id="i0R-6m-NYP"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CsS-Yw-kfE">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.20000000000000001" green="0.76862745098039209" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="42T-ZE-9b9" kind="relationship" relationship="rootViewController" id="Daw-x7-WJ4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L25-XL-Ya0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1929" y="516"/>
         </scene>
         <!--Livres-->
         <scene sceneID="vjD-T8-Ary">
@@ -223,12 +230,166 @@
                     </tabBar>
                     <connections>
                         <segue destination="24S-km-Oag" kind="relationship" relationship="viewControllers" id="zDU-K1-zOg"/>
-                        <segue destination="acy-IC-9c5" kind="relationship" relationship="viewControllers" id="cmR-Yl-NSb"/>
+                        <segue destination="Yrx-2s-oTg" kind="relationship" relationship="viewControllers" id="uRm-tf-Kyf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oVf-HR-qxE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1010" y="109"/>
+        </scene>
+        <!--Panier-->
+        <scene sceneID="aGL-BJ-XLc">
+            <objects>
+                <viewController id="42T-ZE-9b9" customClass="CartController" customModule="HenriPotier" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lST-t4-McY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2rK-Du-ZYy">
+                                <rect key="frame" x="0.0" y="64" width="375" height="454"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CartCell" rowHeight="119" id="lv1-33-lj9" customClass="CartCell" customModule="HenriPotier" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="119"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lv1-33-lj9" id="3HV-LA-d9t">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="118.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3I-YJ-tdj" customClass="BookView" customModule="HenriPotier" customModuleProvider="target">
+                                                    <rect key="frame" x="5" y="5" width="260" height="108.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uKs-Fl-W1C">
+                                                    <rect key="frame" x="275" y="5" width="90" height="108.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qté: 1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhG-5L-7uv">
+                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="54.5"/>
+                                                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="SeQ-Dy-y8K">
+                                                            <rect key="frame" x="0.0" y="54.5" width="94" height="29"/>
+                                                            <connections>
+                                                                <action selector="stepperTapped:" destination="lv1-33-lj9" eventType="valueChanged" id="XjV-Za-g8g"/>
+                                                            </connections>
+                                                        </stepper>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="t4f-gF-hOn"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uKs-Fl-W1C" firstAttribute="top" secondItem="3HV-LA-d9t" secondAttribute="top" constant="5" id="8jl-yA-P4l"/>
+                                                <constraint firstItem="uKs-Fl-W1C" firstAttribute="leading" secondItem="T3I-YJ-tdj" secondAttribute="trailing" constant="10" id="BdX-FK-3d6"/>
+                                                <constraint firstAttribute="bottom" secondItem="T3I-YJ-tdj" secondAttribute="bottom" constant="5" id="I1h-YU-AKS"/>
+                                                <constraint firstAttribute="trailing" secondItem="uKs-Fl-W1C" secondAttribute="trailing" constant="10" id="MUe-W7-82q"/>
+                                                <constraint firstItem="T3I-YJ-tdj" firstAttribute="top" secondItem="3HV-LA-d9t" secondAttribute="top" constant="5" id="W5L-5W-4aW"/>
+                                                <constraint firstItem="T3I-YJ-tdj" firstAttribute="leading" secondItem="3HV-LA-d9t" secondAttribute="leading" constant="5" id="iD8-Pb-Lp3"/>
+                                                <constraint firstAttribute="bottom" secondItem="uKs-Fl-W1C" secondAttribute="bottom" constant="5" id="lAe-Ac-8eu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookView" destination="T3I-YJ-tdj" id="lOl-ay-hKv"/>
+                                            <outlet property="quantityLabel" destination="XhG-5L-7uv" id="3mK-9z-Xak"/>
+                                            <outlet property="stepper" destination="SeQ-Dy-y8K" id="iQX-S7-kEE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="42T-ZE-9b9" id="d1A-oi-d6e"/>
+                                    <outlet property="delegate" destination="42T-ZE-9b9" id="tOc-5Q-bsy"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RG6-mL-M68">
+                                <rect key="frame" x="10" y="518" width="355" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="boJ-xJ-zs3">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="33.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMj-Zu-YAc" userLabel="Total">
+                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="33.5"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2w-g7-Zcs">
+                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="33.5"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                                <color key="textColor" red="0.20000000000000001" green="0.76862745099999996" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3ez-48-Kz4">
+                                        <rect key="frame" x="0.0" y="33.5" width="355" height="33"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remise:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wB-ia-V5N">
+                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="33"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmj-0e-tNN">
+                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="33"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                                <color key="textColor" red="0.20000000000000001" green="0.76862745099999996" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lYi-2g-0gb">
+                                        <rect key="frame" x="0.0" y="66.5" width="355" height="33.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prix final:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1a1-Uw-t7N">
+                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="33.5"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1U-py-ZOI">
+                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="33.5"/>
+                                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                                <color key="textColor" red="0.20000000000000001" green="0.76862745099999996" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0JA-hg-Da5" firstAttribute="trailing" secondItem="RG6-mL-M68" secondAttribute="trailing" constant="10" id="6Om-tb-y5U"/>
+                            <constraint firstItem="0JA-hg-Da5" firstAttribute="bottom" secondItem="2rK-Du-ZYy" secondAttribute="bottom" constant="100" id="870-WA-j13"/>
+                            <constraint firstItem="RG6-mL-M68" firstAttribute="leading" secondItem="0JA-hg-Da5" secondAttribute="leading" constant="10" id="8vv-0C-InD"/>
+                            <constraint firstItem="0JA-hg-Da5" firstAttribute="trailing" secondItem="2rK-Du-ZYy" secondAttribute="trailing" id="Ita-rW-Lns"/>
+                            <constraint firstItem="2rK-Du-ZYy" firstAttribute="top" secondItem="0JA-hg-Da5" secondAttribute="top" id="J8w-gC-F7x"/>
+                            <constraint firstItem="2rK-Du-ZYy" firstAttribute="leading" secondItem="0JA-hg-Da5" secondAttribute="leading" id="fq7-iM-ool"/>
+                            <constraint firstItem="RG6-mL-M68" firstAttribute="bottom" secondItem="0JA-hg-Da5" secondAttribute="bottom" id="mQb-rD-nRG"/>
+                            <constraint firstItem="RG6-mL-M68" firstAttribute="top" secondItem="2rK-Du-ZYy" secondAttribute="bottom" id="sDn-kJ-jYN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0JA-hg-Da5"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Livres" image="books" id="vQ5-tr-bWX"/>
+                    <navigationItem key="navigationItem" title="Panier" id="gvO-ou-jB5">
+                        <barButtonItem key="backBarButtonItem" title="Retour" id="xwm-zH-Ya5"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="discountLabel" destination="3wB-ia-V5N" id="XZF-MC-lMg"/>
+                        <outlet property="discountPriceLabel" destination="kmj-0e-tNN" id="421-2l-BdQ"/>
+                        <outlet property="finalLabel" destination="1a1-Uw-t7N" id="OdS-kw-ayZ"/>
+                        <outlet property="finalPriceLabel" destination="f1U-py-ZOI" id="nfB-gs-fJN"/>
+                        <outlet property="tableView" destination="2rK-Du-ZYy" id="RKI-AO-fUn"/>
+                        <outlet property="totalLabel" destination="fMj-Zu-YAc" id="MOV-3I-Mxt"/>
+                        <outlet property="totalPriceLabel" destination="y2w-g7-Zcs" id="Z4S-sj-val"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uaE-8N-OmY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2880.8000000000002" y="515.8920539730135"/>
         </scene>
     </scenes>
     <resources>

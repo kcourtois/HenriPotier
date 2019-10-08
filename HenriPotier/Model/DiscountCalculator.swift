@@ -9,6 +9,31 @@
 import Foundation
 
 class DiscountCalculator {
+    //Apply all the available discounts, and gives the lowest price on completion
+    func applyDiscount(books: [BookData], completion: @escaping (Float) -> Void) {
+        //calculate total price of the books
+        var finalPrice = initialPrice(books: books)
+
+        //check available discounts
+        DiscountService().getDiscount(books: books) { (success, result) in
+            //check if call was successful, if not, calls completion with total price of the books
+            guard let offers = result, success else {
+                completion(finalPrice)
+                return
+            }
+
+            //get all prices available after discount
+            let values = self.getLoweredPrices(offers: offers, books: books)
+
+            //loop to find best price
+            for val in values where val < finalPrice {
+                finalPrice = val
+            }
+
+            //completion called with best price
+            completion(finalPrice)
+        }
+    }
 
     //Returns total cost of given books when lowering the price by given percentage
     func percentage(percentage: Float, books: [BookData]) -> Float {
@@ -21,22 +46,41 @@ class DiscountCalculator {
     }
 
     //Returns total cost of given books when lowering the price by given percentage
-    func slice(sliceValue: Float, value: Float, books: [BookData]) -> Float {
-        var price = initialPrice(books: books)
-        var discount: Float = 0.0
-        while price >= sliceValue {
-            price -= sliceValue
-            discount += value
+    func slice(sliceValue: Float?, value: Float, books: [BookData]) -> Float {
+        if let sliceValue = sliceValue {
+            var price = initialPrice(books: books)
+            var discount: Float = 0.0
+            while price >= sliceValue {
+                price -= sliceValue
+                discount += value
+            }
+            return initialPrice(books: books) - discount
+        } else {
+            return initialPrice(books: books)
         }
-        return initialPrice(books: books) - discount
     }
 
     //Returns total price for all books of an array
-    private func initialPrice(books: [BookData]) -> Float {
+    func initialPrice(books: [BookData]) -> Float {
         var price = 0
         for book in books {
             price += book.price
         }
         return Float(price)
+    }
+
+    private func getLoweredPrices(offers: [DiscountData], books: [BookData]) -> [Float] {
+        var values = [Float]()
+        for discount in offers {
+            switch discount.type {
+            case .minus:
+                values.append(self.minus(amount: discount.value, books: books))
+            case .slice:
+                values.append(self.slice(sliceValue: discount.sliceValue, value: discount.value, books: books))
+            case .percentage:
+                values.append(self.percentage(percentage: discount.value, books: books))
+            }
+        }
+        return values
     }
 }

@@ -31,17 +31,17 @@
                                 <constraint firstAttribute="width" secondItem="AAz-uV-jpw" secondAttribute="height" multiplier="80:100" id="L3J-8m-e7f"/>
                             </constraints>
                         </imageView>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQv-tJ-Nog">
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KQv-tJ-Nog">
                             <rect key="frame" x="208.5" y="0.0" width="399.5" height="248"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Henri Potier et les Reliques de la Mort" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKn-HM-tvB">
-                                    <rect key="frame" x="0.0" y="0.0" width="399.5" height="119"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Henri Potier et les Reliques de la Mort" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKn-HM-tvB">
+                                    <rect key="frame" x="0.0" y="0.0" width="399.5" height="85.5"/>
                                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 €" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkG-FS-wTk">
-                                    <rect key="frame" x="0.0" y="129" width="399.5" height="119"/>
+                                    <rect key="frame" x="0.0" y="90.5" width="399.5" height="157.5"/>
                                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.76862745098039209" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E8CA7AA9C1A95907E9A3EA7 /* Pods_HenriPotierTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6C2191C7E99E9805F92B1C /* Pods_HenriPotierTests.framework */; };
+		9E5C93A0234CBB4A002CCCE0 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C939F234CBB4A002CCCE0 /* CartCell.swift */; };
 		9EF0AB7D2345DFC40087C050 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0AB7C2345DFC40087C050 /* AppDelegate.swift */; };
 		9EF0AB822345DFC40087C050 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF0AB802345DFC40087C050 /* Main.storyboard */; };
 		9EF0AB842345DFC60087C050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EF0AB832345DFC60087C050 /* Assets.xcassets */; };
@@ -21,6 +22,9 @@
 		9EF0ABB0234757010087C050 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABAF234757010087C050 /* BookView.swift */; };
 		9EF0ABB22347B92F0087C050 /* DiscountCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABB12347B92F0087C050 /* DiscountCalculator.swift */; };
 		9EF0ABB423480CD80087C050 /* DiscountCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABB323480CD80087C050 /* DiscountCalculatorTests.swift */; };
+		9EF0ABB72348BA2F0087C050 /* HenriPotier.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABB52348BA2F0087C050 /* HenriPotier.xcdatamodeld */; };
+		9EF0ABB92348C7090087C050 /* BookStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABB82348C7090087C050 /* BookStorageManager.swift */; };
+		9EF0ABBB2348DC130087C050 /* DiscountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0ABBA2348DC130087C050 /* DiscountService.swift */; };
 		C76FA2E75159CB59FF458667 /* Pods_HenriPotier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D065A6CFE4322960FB53F7D6 /* Pods_HenriPotier.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +42,7 @@
 		33A655D6BD9DECC1C3B9E721 /* Pods-HenriPotier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotier.debug.xcconfig"; path = "Target Support Files/Pods-HenriPotier/Pods-HenriPotier.debug.xcconfig"; sourceTree = "<group>"; };
 		5F6C2191C7E99E9805F92B1C /* Pods_HenriPotierTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HenriPotierTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7852E97412CC0DEC51FF6C7D /* Pods-HenriPotierTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotierTests.debug.xcconfig"; path = "Target Support Files/Pods-HenriPotierTests/Pods-HenriPotierTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9E5C939F234CBB4A002CCCE0 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		9EF0AB792345DFC40087C050 /* HenriPotier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HenriPotier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF0AB7C2345DFC40087C050 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EF0AB812345DFC40087C050 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,6 +60,9 @@
 		9EF0ABAF234757010087C050 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		9EF0ABB12347B92F0087C050 /* DiscountCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCalculator.swift; sourceTree = "<group>"; };
 		9EF0ABB323480CD80087C050 /* DiscountCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCalculatorTests.swift; sourceTree = "<group>"; };
+		9EF0ABB62348BA2F0087C050 /* HenriPotier.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HenriPotier.xcdatamodel; sourceTree = "<group>"; };
+		9EF0ABB82348C7090087C050 /* BookStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStorageManager.swift; sourceTree = "<group>"; };
+		9EF0ABBA2348DC130087C050 /* DiscountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountService.swift; sourceTree = "<group>"; };
 		B5770C4E727D6E954F2B94C5 /* Pods-HenriPotier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotier.release.xcconfig"; path = "Target Support Files/Pods-HenriPotier/Pods-HenriPotier.release.xcconfig"; sourceTree = "<group>"; };
 		C85F80D011840C87E3854D31 /* Pods-HenriPotierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HenriPotierTests.release.xcconfig"; path = "Target Support Files/Pods-HenriPotierTests/Pods-HenriPotierTests.release.xcconfig"; sourceTree = "<group>"; };
 		D065A6CFE4322960FB53F7D6 /* Pods_HenriPotier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HenriPotier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +153,9 @@
 			children = (
 				9EF0ABA4234613450087C050 /* BookService.swift */,
 				9EF0ABB12347B92F0087C050 /* DiscountCalculator.swift */,
+				9EF0ABB52348BA2F0087C050 /* HenriPotier.xcdatamodeld */,
+				9EF0ABB82348C7090087C050 /* BookStorageManager.swift */,
+				9EF0ABBA2348DC130087C050 /* DiscountService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,6 +168,7 @@
 				9EF0ABA023460BCE0087C050 /* BookView.xib */,
 				9EF0ABAD234755DB0087C050 /* BookCell.swift */,
 				9EF0ABAF234757010087C050 /* BookView.swift */,
+				9E5C939F234CBB4A002CCCE0 /* CartCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,8 +386,12 @@
 				9EF0ABAB2346317C0087C050 /* CartController.swift in Sources */,
 				9EF0AB7D2345DFC40087C050 /* AppDelegate.swift in Sources */,
 				9EF0ABB0234757010087C050 /* BookView.swift in Sources */,
+				9EF0ABB92348C7090087C050 /* BookStorageManager.swift in Sources */,
+				9E5C93A0234CBB4A002CCCE0 /* CartCell.swift in Sources */,
 				9EF0ABB22347B92F0087C050 /* DiscountCalculator.swift in Sources */,
+				9EF0ABB72348BA2F0087C050 /* HenriPotier.xcdatamodeld in Sources */,
 				9EF0ABA9234630A50087C050 /* BookDetailController.swift in Sources */,
+				9EF0ABBB2348DC130087C050 /* DiscountService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +662,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9EF0ABB52348BA2F0087C050 /* HenriPotier.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9EF0ABB62348BA2F0087C050 /* HenriPotier.xcdatamodel */,
+			);
+			currentVersion = 9EF0ABB62348BA2F0087C050 /* HenriPotier.xcdatamodel */;
+			path = HenriPotier.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9EF0AB712345DFC40087C050 /* Project object */;
 }

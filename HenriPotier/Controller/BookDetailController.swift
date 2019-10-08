@@ -22,12 +22,16 @@ class BookDetailController: UIViewController {
         if let book = book {
             bookView.setView(book: book)
             synopsisTitleLabel.text = "Synopsis:"
-            var synopsis = ""
-            for text in book.synopsis {
-                synopsis += "\(text)\n\n"
-            }
-            synopsisDetailLabel.text = synopsis
+            synopsisDetailLabel.text = book.getSynopsis()
             addToCartButton.setTitle("Ajouter au panier", for: .normal)
+        }
+    }
+
+    @IBAction func addToCart() {
+        if let book = book {
+            let storage = BookStorageManager()
+            _ = storage.insertBook(book: book)
+            storage.save()
         }
     }
 }
