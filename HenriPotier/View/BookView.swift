@@ -31,7 +31,7 @@ class BookView: UIView {
     }
 
     //Called by owner view, pass book data in parameter to set view
-    func setView(book: BookData) {
+    func setView(book: Book) {
         titleLabel.text = book.title
         priceLabel.text = "\(book.price) €"
         guard let url = URL(string: book.cover) else {

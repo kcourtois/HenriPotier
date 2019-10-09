@@ -16,21 +16,45 @@ class CartController: UIViewController {
     @IBOutlet weak var finalPriceLabel: UILabel!
     @IBOutlet weak var finalLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    private var books = [BookData]()
+    private var books = [Book]()
+    private let cart = Cart()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //puts uiview instead of empty cells at the end of the tableview
         tableView.tableFooterView = UIView()
-        totalLabel.text = "Total:"
-        discountLabel.text = "Remise:"
-        finalLabel.text = "Prix final:"
+
+        //set initial label values for the view
+        setLabels()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //todo books = bookdata
-        let bookList = BookStorageManager().fetchBookData()
+        //Notification observer for didUpdateBookQuantity
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidSendUpdateBookQuantity),
+                                               name: .didSendUpdateBookQuantity, object: nil)
+        refreshBookList()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //remove observers on view disappear
+        NotificationCenter.default.removeObserver(self, name: .didSendUpdateBookQuantity, object: nil)
+    }
+
+    //set initial label values for the view
+    private func setLabels() {
+        totalLabel.text = "Total:"
+        totalPriceLabel.text = "0 €"
+        discountLabel.text = "Remise:"
+        discountPriceLabel.text = "0 €"
+        finalLabel.text = "Prix final:"
+        finalPriceLabel.text = "0 €"
+    }
+
+    //fetch books in cart and refresh tableview if needed
+    private func refreshBookList() {
+        let bookList = cart.getBooksInCart()
         if books != bookList {
             books = bookList
             tableView.reloadData()
@@ -43,6 +67,11 @@ class CartController: UIViewController {
 
             }
         }
+    }
+
+    //Triggers on notification didSendUpdateBookQuantity
+    @objc private func onDidSendUpdateBookQuantity(_ notification: Notification) {
+        refreshBookList()
     }
 }
 
@@ -70,9 +99,10 @@ extension CartController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
+        //slide to delete all copies of a book
         if editingStyle == .delete {
-            self.books.remove(at: indexPath.row)
-            tableView.reloadData()
+            cart.deleteAllCopies(book: books[indexPath.row])
+            refreshBookList()
         }
     }
 }

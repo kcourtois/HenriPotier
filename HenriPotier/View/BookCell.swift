@@ -11,7 +11,7 @@ import UIKit
 class BookCell: UITableViewCell {
     @IBOutlet weak var bookView: BookView!
 
-    func configure(book: BookData) {
+    func configure(book: Book) {
         bookView.setView(book: book)
     }
 }

@@ -11,8 +11,8 @@ import UIKit
 class BookListController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    private var books = [BookData]()
-    private var bookTapped: BookData?
+    private var books = [Book]()
+    private var bookTapped: Book?
 
     override func viewDidLoad() {
         super.viewDidLoad()

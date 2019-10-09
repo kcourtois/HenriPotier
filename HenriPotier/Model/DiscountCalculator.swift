@@ -10,7 +10,7 @@ import Foundation
 
 class DiscountCalculator {
     //Apply all the available discounts, and gives the lowest price on completion
-    func applyDiscount(books: [BookData], completion: @escaping (Float) -> Void) {
+    func applyDiscount(books: [Book], completion: @escaping (Float) -> Void) {
         //calculate total price of the books
         var finalPrice = initialPrice(books: books)
 
@@ -36,17 +36,17 @@ class DiscountCalculator {
     }
 
     //Returns total cost of given books when lowering the price by given percentage
-    func percentage(percentage: Float, books: [BookData]) -> Float {
+    func percentage(percentage: Float, books: [Book]) -> Float {
         return initialPrice(books: books) * (1 - percentage/100)
     }
 
     //Returns total cost of given books when lowering the price by given amount
-    func minus(amount: Float, books: [BookData]) -> Float {
+    func minus(amount: Float, books: [Book]) -> Float {
         return initialPrice(books: books) - amount
     }
 
     //Returns total cost of given books when lowering the price by given percentage
-    func slice(sliceValue: Float?, value: Float, books: [BookData]) -> Float {
+    func slice(sliceValue: Float?, value: Float, books: [Book]) -> Float {
         if let sliceValue = sliceValue {
             var price = initialPrice(books: books)
             var discount: Float = 0.0
@@ -61,15 +61,15 @@ class DiscountCalculator {
     }
 
     //Returns total price for all books of an array
-    func initialPrice(books: [BookData]) -> Float {
+    func initialPrice(books: [Book]) -> Float {
         var price = 0
         for book in books {
-            price += book.price
+            price += book.price * book.quantity
         }
         return Float(price)
     }
 
-    private func getLoweredPrices(offers: [DiscountData], books: [BookData]) -> [Float] {
+    private func getLoweredPrices(offers: [DiscountData], books: [Book]) -> [Float] {
         var values = [Float]()
         for discount in offers {
             switch discount.type {

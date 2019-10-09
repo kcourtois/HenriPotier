@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class BookDetailController: UIViewController {
     @IBOutlet weak var bookView: BookView!
@@ -14,7 +15,7 @@ class BookDetailController: UIViewController {
     @IBOutlet weak var synopsisDetailLabel: UILabel!
     @IBOutlet weak var addToCartButton: UIButton!
 
-    var book: BookData?
+    var book: Book?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +23,30 @@ class BookDetailController: UIViewController {
         if let book = book {
             bookView.setView(book: book)
             synopsisTitleLabel.text = "Synopsis:"
-            synopsisDetailLabel.text = book.getSynopsis()
+            synopsisDetailLabel.text = book.synopsis
             addToCartButton.setTitle("Ajouter au panier", for: .normal)
         }
     }
 
     @IBAction func addToCart() {
         if let book = book {
-            let storage = BookStorageManager()
-            _ = storage.insertBook(book: book)
-            storage.save()
+            let cart = Cart()
+            cart.addToCart(book: book)
+            presentAlertDelay(title: "Ajout au panier",
+                              message: "Votre livre a été ajouté au panier avec succès",
+                              delay: 2)
+        } else {
+            //TODO: Error
+        }
+    }
+
+    //Creates an alert with a title and a message that stays on screen for given delay
+    func presentAlertDelay(title: String, message: String, delay: Double) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        let when = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            alert.dismiss(animated: true, completion: nil)
         }
     }
 }

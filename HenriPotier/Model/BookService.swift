@@ -9,13 +9,12 @@
 import Foundation
 import Alamofire
 
-struct BookData: Codable, Equatable {
+struct BookData: Codable {
     let isbn: String
     let title: String
     let price: Int
     let cover: String
     let synopsis: [String]
-    var quantity: Int?
 
     func getSynopsis() -> String {
         var str = ""
@@ -28,7 +27,7 @@ struct BookData: Codable, Equatable {
 
 class BookService {
     //Request to Henri Potier API, to retrieve books data
-    func getBooks(callback: @escaping (Bool, [BookData]?) -> Void) {
+    func getBooks(callback: @escaping (Bool, [Book]?) -> Void) {
         //Create url for Henri Potier API
         let url: String = "http://henri-potier.xebia.fr/books"
 
@@ -54,8 +53,15 @@ class BookService {
                     return
                 }
 
+                //Convert BookData array to Book array
+                var books = [Book]()
+                for book in responseJSON {
+                    books.append(Book(isbn: book.isbn, title: book.title, price: book.price,
+                                      cover: book.cover, synopsis: book.getSynopsis(), quantity: 1))
+                }
+
                 //If everything is OK, callback with success and data
-                callback(true, responseJSON)
+                callback(true, books)
         }
     }
 }

@@ -13,16 +13,30 @@ class CartCell: UITableViewCell {
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var quantityLabel: UILabel!
 
-    func configure(book: BookData) {
+    var book: Book?
+
+    func configure(book: Book) {
+        self.book = book
         bookView.setView(book: book)
-        if let qte = book.quantity {
-            quantityLabel.text = "Qté: \(qte)"
-        } else {
-            quantityLabel.text = "Qté: \(0)"
-        }
+        quantityLabel.text = "Qté: \(book.quantity)"
+        stepper.value = Double(book.quantity)
     }
 
     @IBAction func stepperTapped(_ sender: Any) {
-        quantityLabel.text = "Qté: \(Int(stepper.value))"
+        if let book = book {
+            let cart = Cart()
+            if Int(stepper.value) > book.quantity {
+                cart.addToCart(book: book)
+            } else {
+                cart.deleteFromCart(book: book)
+            }
+            quantityLabel.text = "Qté: \(Int(stepper.value))"
+        }
+        postUpdateBookQuantityNotification()
+    }
+
+    //send sign in notification
+    private func postUpdateBookQuantityNotification() {
+        NotificationCenter.default.post(name: .didSendUpdateBookQuantity, object: nil, userInfo: nil)
     }
 }

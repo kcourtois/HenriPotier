@@ -25,7 +25,13 @@ enum DiscountType: String, Codable {
 
 class DiscountService {
     //Request to Henri Potier API, to retrieve discount data
-    func getDiscount(books: [BookData], callback: @escaping (Bool, [DiscountData]?) -> Void) {
+    func getDiscount(books: [Book], callback: @escaping (Bool, [DiscountData]?) -> Void) {
+        //if there are no books, can't fetch a discount
+        guard !books.isEmpty else {
+            callback(false, nil)
+            return
+        }
+
         //Create url for Henri Potier API
         var url: String = "http://henri-potier.xebia.fr/books/"
 
