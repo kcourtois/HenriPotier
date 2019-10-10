@@ -31,22 +31,25 @@ class BookDetailController: UIViewController {
     @IBAction func addToCart() {
         if let book = book {
             let cart = Cart()
-            cart.addToCart(book: book)
-            presentAlertDelay(title: "Ajout au panier",
-                              message: "Votre livre a été ajouté au panier avec succès",
-                              delay: 2)
+            //Add book to the cart
+            cart.addToCart(book: book, completion: { success in
+                if success {
+                    //If it was a success, show an alert for success
+                    self.presentAlertDelay(title: "Ajout au panier",
+                                      message: "Votre livre a été ajouté au panier avec succès",
+                                      delay: 2)
+                } else {
+                    //If there was an error, show an error message
+                    self.presentAlert(title: "Erreur",
+                                      message: "Nous n'avons pas pu ajouter ce livre à votre panier. " +
+                                               "Veuillez réessayer plus tard")
+                }
+            })
         } else {
-            //TODO: Error
-        }
-    }
-
-    //Creates an alert with a title and a message that stays on screen for given delay
-    func presentAlertDelay(title: String, message: String, delay: Double) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        self.present(alert, animated: true, completion: nil)
-        let when = DispatchTime.now() + delay
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            alert.dismiss(animated: true, completion: nil)
+            //If there was an error, show an error message
+            self.presentAlert(title: "Erreur",
+                              message: "Nous n'avons pas pu ajouter ce livre à votre panier. " +
+                                       "Veuillez réessayer plus tard")
         }
     }
 }

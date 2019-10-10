@@ -23,23 +23,13 @@ class CartController: UIViewController {
         super.viewDidLoad()
         //puts uiview instead of empty cells at the end of the tableview
         tableView.tableFooterView = UIView()
-
         //set initial label values for the view
         setLabels()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //Notification observer for didUpdateBookQuantity
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidSendUpdateBookQuantity),
-                                               name: .didSendUpdateBookQuantity, object: nil)
         refreshBookList()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        //remove observers on view disappear
-        NotificationCenter.default.removeObserver(self, name: .didSendUpdateBookQuantity, object: nil)
     }
 
     //set initial label values for the view
@@ -55,7 +45,7 @@ class CartController: UIViewController {
     //fetch books in cart and refresh tableview if needed
     private func refreshBookList() {
         let bookList = cart.getBooksInCart()
-        if books != bookList {
+        if let bookList = bookList, books != bookList {
             books = bookList
             tableView.reloadData()
             let calculator = DiscountCalculator()
@@ -66,17 +56,17 @@ class CartController: UIViewController {
                 self.finalPriceLabel.text = String(format: "%.02f €", finalPrice)
 
             }
+        } else {
+            //If there was an error, show an error message
+            self.presentAlert(title: "Erreur",
+                              message: "Nous n'avons pas pu accéder à votre panier. " +
+                                       "Veuillez réessayer plus tard.")
         }
-    }
-
-    //Triggers on notification didSendUpdateBookQuantity
-    @objc private func onDidSendUpdateBookQuantity(_ notification: Notification) {
-        refreshBookList()
     }
 }
 
 // MARK: - Tableview datasource
-extension CartController: UITableViewDataSource {
+extension CartController: UITableViewDataSource, CartCellDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -90,7 +80,7 @@ extension CartController: UITableViewDataSource {
             as? CartCell else {
                 return UITableViewCell()
         }
-
+        cell.delegate = self
         cell.configure(book: books[indexPath.row])
 
         return cell
@@ -101,8 +91,44 @@ extension CartController: UITableViewDataSource {
                    forRowAt indexPath: IndexPath) {
         //slide to delete all copies of a book
         if editingStyle == .delete {
-            cart.deleteAllCopies(book: books[indexPath.row])
-            refreshBookList()
+            cart.deleteAllCopies(book: books[indexPath.row], completion: { success in
+                if success {
+                    self.refreshBookList()
+                } else {
+                    self.presentAlert(title: "Erreur",
+                                      message: "Une erreur est survenue. Veuillez réessayer plus tard.")
+                }
+            })
+        }
+    }
+
+    func didTap(_ cell: CartCell) {
+        let indexPath = tableView.indexPath(for: cell)
+        if let index = indexPath?.row {
+            let book = books[index]
+            if Int(cell.stepper.value) > book.quantity {
+                //if stepper increased, add a copy of the book to the cart
+                cart.addToCart(book: book, completion: { success in
+                    if success {
+                        cell.quantityLabel.text = "Qté: \(Int(cell.stepper.value))"
+                        self.refreshBookList()
+                    } else {
+                        self.presentAlert(title: "Erreur",
+                                          message: "Une erreur est survenue. Veuillez réessayer plus tard.")
+                    }
+                })
+            } else {
+                //else, remove a copy of the book from the cart
+                cart.deleteFromCart(book: book, completion: { success in
+                    if success {
+                        cell.quantityLabel.text = "Qté: \(Int(cell.stepper.value))"
+                        self.refreshBookList()
+                    } else {
+                        self.presentAlert(title: "Erreur",
+                                          message: "Une erreur est survenue. Veuillez réessayer plus tard.")
+                    }
+                })
+            }
         }
     }
 }

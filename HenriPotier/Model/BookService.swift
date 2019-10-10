@@ -16,12 +16,13 @@ struct BookData: Codable {
     let cover: String
     let synopsis: [String]
 
+    //returns full synopsis as one formated string
     func getSynopsis() -> String {
-        var str = ""
+        var formatedSynopsis = ""
         for text in synopsis {
-            str += "\(text)\n\n"
+            formatedSynopsis += "\(text)\n\n"
         }
-        return str
+        return formatedSynopsis
     }
 }
 

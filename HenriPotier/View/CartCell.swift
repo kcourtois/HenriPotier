@@ -8,35 +8,26 @@
 
 import UIKit
 
+protocol CartCellDelegate: class {
+    //func that is called when stepper is tapped
+    func didTap(_ cell: CartCell)
+}
+
 class CartCell: UITableViewCell {
     @IBOutlet weak var bookView: BookView!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var quantityLabel: UILabel!
+    weak var delegate: CartCellDelegate?
 
-    var book: Book?
-
+    //setup of the cell labels and views
     func configure(book: Book) {
-        self.book = book
         bookView.setView(book: book)
         quantityLabel.text = "Qté: \(book.quantity)"
         stepper.value = Double(book.quantity)
     }
 
+    //call delegate func when stepper tapped
     @IBAction func stepperTapped(_ sender: Any) {
-        if let book = book {
-            let cart = Cart()
-            if Int(stepper.value) > book.quantity {
-                cart.addToCart(book: book)
-            } else {
-                cart.deleteFromCart(book: book)
-            }
-            quantityLabel.text = "Qté: \(Int(stepper.value))"
-        }
-        postUpdateBookQuantityNotification()
-    }
-
-    //send sign in notification
-    private func postUpdateBookQuantityNotification() {
-        NotificationCenter.default.post(name: .didSendUpdateBookQuantity, object: nil, userInfo: nil)
+        delegate?.didTap(self)
     }
 }
