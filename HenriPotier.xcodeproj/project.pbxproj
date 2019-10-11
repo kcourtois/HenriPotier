@@ -12,6 +12,9 @@
 		9E5C93A2234E0174002CCCE0 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C93A1234E0174002CCCE0 /* Book.swift */; };
 		9E5C93A4234E162C002CCCE0 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C93A3234E162C002CCCE0 /* Cart.swift */; };
 		9E5C93AC234F642E002CCCE0 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C93AB234F642E002CCCE0 /* AlertExtension.swift */; };
+		9E5C93AE2350BE38002CCCE0 /* BookServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C93AD2350BE38002CCCE0 /* BookServiceTests.swift */; };
+		9E5C93B22350BE77002CCCE0 /* DiscountServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C93B12350BE77002CCCE0 /* DiscountServiceTests.swift */; };
+		9E5C93BB2350C671002CCCE0 /* CartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C93BA2350C671002CCCE0 /* CartTests.swift */; };
 		9EF0AB7D2345DFC40087C050 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0AB7C2345DFC40087C050 /* AppDelegate.swift */; };
 		9EF0AB822345DFC40087C050 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF0AB802345DFC40087C050 /* Main.storyboard */; };
 		9EF0AB842345DFC60087C050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EF0AB832345DFC60087C050 /* Assets.xcassets */; };
@@ -47,6 +50,9 @@
 		9E5C93A1234E0174002CCCE0 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		9E5C93A3234E162C002CCCE0 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		9E5C93AB234F642E002CCCE0 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
+		9E5C93AD2350BE38002CCCE0 /* BookServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookServiceTests.swift; sourceTree = "<group>"; };
+		9E5C93B12350BE77002CCCE0 /* DiscountServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountServiceTests.swift; sourceTree = "<group>"; };
+		9E5C93BA2350C671002CCCE0 /* CartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTests.swift; sourceTree = "<group>"; };
 		9EF0AB792345DFC40087C050 /* HenriPotier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HenriPotier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF0AB7C2345DFC40087C050 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EF0AB812345DFC40087C050 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,6 +161,9 @@
 			children = (
 				9EF0AB932345DFC70087C050 /* Info.plist */,
 				9EF0ABB323480CD80087C050 /* DiscountCalculatorTests.swift */,
+				9E5C93AD2350BE38002CCCE0 /* BookServiceTests.swift */,
+				9E5C93B12350BE77002CCCE0 /* DiscountServiceTests.swift */,
+				9E5C93BA2350C671002CCCE0 /* CartTests.swift */,
 			);
 			path = HenriPotierTests;
 			sourceTree = "<group>";
@@ -411,7 +420,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E5C93AE2350BE38002CCCE0 /* BookServiceTests.swift in Sources */,
+				9E5C93B22350BE77002CCCE0 /* DiscountServiceTests.swift in Sources */,
 				9EF0ABB423480CD80087C050 /* DiscountCalculatorTests.swift in Sources */,
+				9E5C93BB2350C671002CCCE0 /* CartTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

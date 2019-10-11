@@ -10,24 +10,28 @@ import Foundation
 import RealmSwift
 
 class Cart {
+
+    let realm: Realm!
+
+    init(realm: Realm) {
+        self.realm = realm
+    }
+
+    //init with default Realm
+    convenience init() {
+        // swiftlint:disable:next force_try
+        self.init(realm: try! Realm())
+    }
+
     //Get all books in cart
-    func getBooksInCart() -> [Book]? {
-        do {
-            //Create Realm object
-            let realm = try Realm()
-            //return all the books stored as an array
-            return Array(realm.objects(Book.self))
-        } catch {
-            //An error happened, return nil
-            return nil
-        }
+    func getBooksInCart() -> [Book] {
+        //return all the books stored as an array
+        return Array(realm.objects(Book.self))
     }
 
     //add book to cart
     func addToCart(book: Book, completion: @escaping (Bool) -> Void) {
         do {
-            //Create Realm object
-            let realm = try Realm()
             //Add a filter on book isbn
             let books = realm.objects(Book.self).filter("isbn == '\(book.isbn)'")
 
@@ -54,8 +58,6 @@ class Cart {
     //delete book from cart
     func deleteFromCart(book: Book, completion: @escaping (Bool) -> Void) {
         do {
-            //Create Realm object
-            let realm = try Realm()
             //Add a filter on book isbn
             let books = realm.objects(Book.self).filter("isbn == '\(book.isbn)'")
             //Retrive first book in the filtered array
@@ -79,8 +81,6 @@ class Cart {
     //delete all copies of the same book
     func deleteAllCopies(book: Book, completion: @escaping (Bool) -> Void) {
         do {
-            //Create Realm object
-            let realm = try Realm()
             //Add a filter on book isbn
             let books = realm.objects(Book.self).filter("isbn == '\(book.isbn)'")
             //if we found the book, delete it

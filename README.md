@@ -10,4 +10,4 @@ The main goal of this app is to fetch data from a REST API, and use it to displa
 
 # Pods
 
-[Alamofire](https://cocoapods.org/pods/Alamofire) and [AlamofireImage](https://cocoapods.org/pods/AlamofireImage)
+[Alamofire](https://cocoapods.org/pods/Alamofire), [AlamofireImage](https://cocoapods.org/pods/AlamofireImage), [RealmSwift](https://realm.io/docs/swift/latest/#installation)

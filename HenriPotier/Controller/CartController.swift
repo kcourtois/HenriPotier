@@ -45,7 +45,7 @@ class CartController: UIViewController {
     //fetch books in cart and refresh tableview if needed
     private func refreshBookList() {
         let bookList = cart.getBooksInCart()
-        if let bookList = bookList, books != bookList {
+        if books != bookList {
             books = bookList
             tableView.reloadData()
             let calculator = DiscountCalculator()
@@ -102,6 +102,7 @@ extension CartController: UITableViewDataSource, CartCellDelegate {
         }
     }
 
+    //Func that is called when cell stepper value changes
     func didTap(_ cell: CartCell) {
         let indexPath = tableView.indexPath(for: cell)
         if let index = indexPath?.row {
