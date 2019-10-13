@@ -11,3 +11,12 @@ The main goal of this app is to fetch data from a REST API, and use it to displa
 # Pods
 
 [Alamofire](https://cocoapods.org/pods/Alamofire), [AlamofireImage](https://cocoapods.org/pods/AlamofireImage), [RealmSwift](https://realm.io/docs/swift/latest/#installation), [MockingJay](https://cocoapods.org/pods/Mockingjay)
+
+# Features
+
+- List of available books
+- Detail page to see the overview and add it to the cart
+- Local storage of the cart
+- Stepper for copies of a book in the cart
+- Swipe to delete all copies of a book in the cart
+- Initial price, discount, and final price display
