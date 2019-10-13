@@ -9,6 +9,7 @@ target 'HenriPotier' do
   pod 'Alamofire', '~> 4.9.0'
   pod 'AlamofireImage', '~> 3.5.2'
   pod 'RealmSwift', '~> 3.19.0'
+  pod 'Mockingjay', '~> 3.0.0-alpha.1'
 
   target 'HenriPotierTests' do
     inherit! :search_paths

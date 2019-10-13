@@ -45,14 +45,8 @@ class DiscountService {
         Alamofire.request(url, method: .get, parameters: nil)
             .validate()
             .responseJSON { response in
-                //Check if request was successful
-                guard response.result.isSuccess else {
-                    callback(false, nil)
-                    return
-                }
-
-                //Check if data is not empty
-                guard let data = response.data else {
+                //Check if request was successful and data not empty
+                guard response.result.isSuccess, let data = response.data else {
                     callback(false, nil)
                     return
                 }

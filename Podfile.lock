@@ -2,30 +2,43 @@ PODS:
   - Alamofire (4.9.0)
   - AlamofireImage (3.5.2):
     - Alamofire (~> 4.8)
+  - Mockingjay (3.0.0-alpha.1):
+    - Mockingjay/Core (= 3.0.0-alpha.1)
+    - Mockingjay/XCTest (= 3.0.0-alpha.1)
+  - Mockingjay/Core (3.0.0-alpha.1):
+    - URITemplate (~> 3.0)
+  - Mockingjay/XCTest (3.0.0-alpha.1):
+    - Mockingjay/Core
   - Realm (3.19.0):
     - Realm/Headers (= 3.19.0)
   - Realm/Headers (3.19.0)
   - RealmSwift (3.19.0):
     - Realm (= 3.19.0)
+  - URITemplate (3.0.0)
 
 DEPENDENCIES:
-  - Alamofire
-  - AlamofireImage
-  - RealmSwift
+  - Alamofire (~> 4.9.0)
+  - AlamofireImage (~> 3.5.2)
+  - Mockingjay (~> 3.0.0-alpha.1)
+  - RealmSwift (~> 3.19.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - Mockingjay
     - Realm
     - RealmSwift
+    - URITemplate
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
+  Mockingjay: 0f7c5aa49c7f1b95621cee3c79b557141f5a225c
   Realm: 995d585bcf699aaff226715886c849a29dd3d07f
   RealmSwift: 35f284a537989f2187b413e5917091948cb87a3f
+  URITemplate: 58e0d47f967006c5d59888af5356c4a8ed3b197d
 
-PODFILE CHECKSUM: 91ca2d57701f2da5a9c99344a99485333a6d544c
+PODFILE CHECKSUM: 159397f95306266e6f6ab990a2c3948e75e3c4b3
 
 COCOAPODS: 1.8.1

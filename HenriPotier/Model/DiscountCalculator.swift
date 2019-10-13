@@ -9,13 +9,20 @@
 import Foundation
 
 class DiscountCalculator {
+
+    let discountService: DiscountService
+
+    init(discountService: DiscountService = DiscountService()) {
+        self.discountService = discountService
+    }
+
     //Apply all the available discounts, and gives the lowest price on completion
     func applyDiscount(books: [Book], completion: @escaping (Float) -> Void) {
         //calculate total price of the books
         var finalPrice = initialPrice(books: books)
 
         //check available discounts
-        DiscountService().getDiscount(books: books) { (success, result) in
+        discountService.getDiscount(books: books) { (success, result) in
             //check if call was successful, if not, calls completion with total price of the books
             guard let offers = result, success else {
                 completion(finalPrice)
