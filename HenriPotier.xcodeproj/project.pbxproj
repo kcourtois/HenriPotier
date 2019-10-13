@@ -15,7 +15,6 @@
 		9E5C93AE2350BE38002CCCE0 /* BookServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C93AD2350BE38002CCCE0 /* BookServiceTests.swift */; };
 		9E5C93B22350BE77002CCCE0 /* DiscountServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C93B12350BE77002CCCE0 /* DiscountServiceTests.swift */; };
 		9E5C93BB2350C671002CCCE0 /* CartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C93BA2350C671002CCCE0 /* CartTests.swift */; };
-		9E5C93BF23521A65002CCCE0 /* MockingjayFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5C93BE23521A65002CCCE0 /* MockingjayFilters.swift */; };
 		9E5C93C123521CA5002CCCE0 /* Books.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E5C93C023521CA5002CCCE0 /* Books.json */; };
 		9E5C93C323521D4F002CCCE0 /* Offers.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E5C93C223521D4F002CCCE0 /* Offers.json */; };
 		9EF0AB7D2345DFC40087C050 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF0AB7C2345DFC40087C050 /* AppDelegate.swift */; };
@@ -56,7 +55,6 @@
 		9E5C93AD2350BE38002CCCE0 /* BookServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookServiceTests.swift; sourceTree = "<group>"; };
 		9E5C93B12350BE77002CCCE0 /* DiscountServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountServiceTests.swift; sourceTree = "<group>"; };
 		9E5C93BA2350C671002CCCE0 /* CartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTests.swift; sourceTree = "<group>"; };
-		9E5C93BE23521A65002CCCE0 /* MockingjayFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockingjayFilters.swift; sourceTree = "<group>"; };
 		9E5C93C023521CA5002CCCE0 /* Books.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Books.json; sourceTree = "<group>"; };
 		9E5C93C223521D4F002CCCE0 /* Offers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Offers.json; sourceTree = "<group>"; };
 		9EF0AB792345DFC40087C050 /* HenriPotier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HenriPotier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,7 +168,6 @@
 				9E5C93AD2350BE38002CCCE0 /* BookServiceTests.swift */,
 				9E5C93B12350BE77002CCCE0 /* DiscountServiceTests.swift */,
 				9E5C93BA2350C671002CCCE0 /* CartTests.swift */,
-				9E5C93BE23521A65002CCCE0 /* MockingjayFilters.swift */,
 				9E5C93C023521CA5002CCCE0 /* Books.json */,
 				9E5C93C223521D4F002CCCE0 /* Offers.json */,
 			);
@@ -433,7 +430,6 @@
 			files = (
 				9E5C93AE2350BE38002CCCE0 /* BookServiceTests.swift in Sources */,
 				9E5C93B22350BE77002CCCE0 /* DiscountServiceTests.swift in Sources */,
-				9E5C93BF23521A65002CCCE0 /* MockingjayFilters.swift in Sources */,
 				9EF0ABB423480CD80087C050 /* DiscountCalculatorTests.swift in Sources */,
 				9E5C93BB2350C671002CCCE0 /* CartTests.swift in Sources */,
 			);

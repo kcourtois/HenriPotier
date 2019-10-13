@@ -6,7 +6,6 @@
 //  Copyright © 2019 Kévin Courtois. All rights reserved.
 //
 
-import Foundation
 import Mockingjay
 import XCTest
 @testable import HenriPotier

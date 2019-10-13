@@ -6,14 +6,13 @@
 //  Copyright © 2019 Kévin Courtois. All rights reserved.
 //
 
-import Foundation
 import Mockingjay
 import XCTest
 @testable import HenriPotier
 
 class BookServiceTests: XCTestCase {
     func testGivenBookDataWhenCallingGetSynopsisThenShouldReturnFormattedString() {
-        let bookData = BookData(isbn: "", title: "", price: 0, cover: "", synopsis: ["Test","is","working"])
+        let bookData = BookData(isbn: "", title: "", price: 0, cover: "", synopsis: ["Test", "is", "working"])
         XCTAssertEqual(bookData.getSynopsis(), "Test\n\nis\n\nworking\n\n")
     }
 

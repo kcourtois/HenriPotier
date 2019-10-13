@@ -76,6 +76,7 @@ class DiscountCalculator {
         return Float(price)
     }
 
+    //Used by applyDiscount, check which offer is the best of all and return the lowest price found
     private func getLoweredPrices(offers: [DiscountData], books: [Book]) -> [Float] {
         var values = [Float]()
         for discount in offers {

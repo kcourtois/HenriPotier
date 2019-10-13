@@ -2,16 +2,16 @@
     "offers": [
         {
             "type": "percentage",
-            "value": 8
+            "value": 10
         },
         {
             "type": "minus",
-            "value": 30
+            "value": 8
         },
         {
             "type": "slice",
-            "sliceValue": 80,
-            "value": 14
+            "sliceValue": 150,
+            "value": 20
         }
     ]
 }

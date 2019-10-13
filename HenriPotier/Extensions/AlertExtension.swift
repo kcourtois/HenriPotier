@@ -25,15 +25,4 @@ extension UIViewController {
             alert.dismiss(animated: true, completion: nil)
         }
     }
-
-    //Creates an alert with an activity indicator (loading screen), and returns it to dismiss later
-    func loadingAlert() -> UIAlertController {
-        let alert = UIAlertController(title: nil, message: "Chargement...", preferredStyle: .alert)
-        let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        activityIndicator.style = UIActivityIndicatorView.Style.gray
-        activityIndicator.startAnimating()
-        alert.view.addSubview(activityIndicator)
-        present(alert, animated: true, completion: nil)
-        return alert
-    }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+//Book is used to store books in cart, with Realm
 class Book: Object {
     @objc dynamic private(set) var isbn: String = ""
     @objc dynamic private(set) var title: String = ""

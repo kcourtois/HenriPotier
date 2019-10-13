@@ -32,14 +32,22 @@ class DiscountService {
             return
         }
 
-        //Create url for Henri Potier API
+        //Base URL
         var url: String = "http://henri-potier.xebia.fr/books/"
 
-        for index in 0..<books.count-1 {
-            url += "\(books[index].isbn),"
+        //For each book
+        for bookIndex in 0..<books.count {
+            //And each copy
+            for _ in 0..<books[bookIndex].quantity {
+                //add isbn to the url
+                url += "\(books[bookIndex].isbn),"
+            }
         }
 
-        url += "\(books[books.count-1].isbn)/commercialOffers"
+        //remove last comma
+        url.remove(at: url.index(before: url.endIndex))
+        //Add end of path
+        url += "/commercialOffers"
 
         //Create request to fetch JSON
         Alamofire.request(url, method: .get, parameters: nil)
