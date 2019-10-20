@@ -18,11 +18,11 @@ class BookView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
+        setupView()
     }
 
-    //Initalisation of the xib
-    private func commonInit() {
+    //Setup of the view
+    private func setupView() {
         //Load xib by name
         let contentView = Bundle.main.loadNibNamed(selfName(), owner: self, options: nil)?.first as? UIView ?? UIView()
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

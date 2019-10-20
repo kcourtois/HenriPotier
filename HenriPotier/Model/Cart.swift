@@ -26,7 +26,7 @@ class Cart {
     //Get all books in cart
     func getBooksInCart() -> [Book] {
         //return all the books stored as an array
-        return Array(realm.objects(Book.self))
+        Array(realm.objects(Book.self))
     }
 
     //add book to cart

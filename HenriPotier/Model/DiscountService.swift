@@ -33,7 +33,7 @@ class DiscountService {
         }
 
         //Base URL
-        var url: String = "http://henri-potier.xebia.fr/books/"
+        var url: String = ServiceStrings.baseUrl
 
         //For each book
         for bookIndex in 0..<books.count {
@@ -47,7 +47,7 @@ class DiscountService {
         //remove last comma
         url.remove(at: url.index(before: url.endIndex))
         //Add end of path
-        url += "/commercialOffers"
+        url += ServiceStrings.offersEndOfPath
 
         //Create request to fetch JSON
         Alamofire.request(url, method: .get, parameters: nil)

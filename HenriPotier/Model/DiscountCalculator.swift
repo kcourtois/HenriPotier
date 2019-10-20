@@ -18,38 +18,33 @@ class DiscountCalculator {
 
     //Apply all the available discounts, and gives the lowest price on completion
     func applyDiscount(books: [Book], completion: @escaping (Float) -> Void) {
-        //calculate total price of the books
-        var finalPrice = initialPrice(books: books)
-
         //check available discounts
         discountService.getDiscount(books: books) { (success, result) in
             //check if call was successful, if not, calls completion with total price of the books
             guard let offers = result, success else {
-                completion(finalPrice)
+                completion(self.initialPrice(books: books))
                 return
             }
 
-            //get all prices available after discount
-            let values = self.getLoweredPrices(offers: offers, books: books)
-
-            //loop to find best price
-            for val in values where val < finalPrice {
-                finalPrice = val
+            //final price is minimum value in the array of prices
+            if let finalPrice = self.getLoweredPrices(offers: offers, books: books).min() {
+                //completion called with best price
+                completion(finalPrice)
+            } else {
+                //if finalPrice not set, complete with initialPrice
+                completion(self.initialPrice(books: books))
             }
-
-            //completion called with best price
-            completion(finalPrice)
         }
     }
 
     //Returns total cost of given books when lowering the price by given percentage
     func percentage(percentage: Float, books: [Book]) -> Float {
-        return initialPrice(books: books) * (1 - percentage/100)
+        initialPrice(books: books) * (1 - percentage/100)
     }
 
     //Returns total cost of given books when lowering the price by given amount
     func minus(amount: Float, books: [Book]) -> Float {
-        return initialPrice(books: books) - amount
+        initialPrice(books: books) - amount
     }
 
     //Returns total cost of given books when lowering the price by given percentage
@@ -69,11 +64,7 @@ class DiscountCalculator {
 
     //Returns total price for all books of an array
     func initialPrice(books: [Book]) -> Float {
-        var price = 0
-        for book in books {
-            price += book.price * book.quantity
-        }
-        return Float(price)
+        Float(books.reduce(0) { $0 + $1.price * $1.quantity })
     }
 
     //Used by applyDiscount, check which offer is the best of all and return the lowest price found
