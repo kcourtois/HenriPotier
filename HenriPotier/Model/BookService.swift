@@ -22,22 +22,27 @@ struct BookData: Codable {
     }
 }
 
+enum BookError: Error {
+    case noDataAvailable
+    case cantDecodeData
+}
+
 class BookService {
     //Request to Henri Potier API, to retrieve books data
-    func getBooks(callback: @escaping (Bool, [Book]?) -> Void) {
+    func getBooks(completion: @escaping (Swift.Result<[Book], BookError>) -> Void) {
         //Create request to fetch JSON
         Alamofire.request(ServiceStrings.baseUrl, method: .get, parameters: nil)
             .validate()
             .responseJSON { response in
                 //Check if request was successful and data not empty
                 guard response.result.isSuccess, let data = response.data else {
-                    callback(false, nil)
+                    completion(.failure(.noDataAvailable))
                     return
                 }
 
                 //Try to parse data into JSON
                 guard let responseJSON = try? JSONDecoder().decode([BookData].self, from: data) else {
-                    callback(false, nil)
+                    completion(.failure(.cantDecodeData))
                     return
                 }
 
@@ -48,7 +53,7 @@ class BookService {
                 }
 
                 //If everything is OK, callback with success and data
-                callback(true, books)
+                completion(.success(books))
         }
     }
 }

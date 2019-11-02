@@ -22,7 +22,7 @@ class DiscountServiceTests: XCTestCase {
         let books = [Book(isbn: "test1", title: "test1", price: 0, cover: "test1", synopsis: "test1", quantity: 1),
                      Book(isbn: "test2", title: "test2", price: 0, cover: "test2", synopsis: "test2", quantity: 1)]
 
-        DiscountService().getDiscount(books: books, callback: { (success, offers) in
+        DiscountService().getDiscount(books: books, completion: { (success, offers) in
             XCTAssertTrue(success)
             XCTAssertNotNil(offers)
             XCTAssertEqual(offers?.count, 3)
@@ -42,7 +42,7 @@ class DiscountServiceTests: XCTestCase {
 
         let books = [Book]()
 
-        DiscountService().getDiscount(books: books, callback: { (success, offers) in
+        DiscountService().getDiscount(books: books, completion: { (success, offers) in
             XCTAssertFalse(success)
             XCTAssertNil(offers)
             expec.fulfill()
@@ -60,7 +60,7 @@ class DiscountServiceTests: XCTestCase {
         let books = [Book(isbn: "test1", title: "test1", price: 0, cover: "test1", synopsis: "test1", quantity: 1),
                      Book(isbn: "test2", title: "test2", price: 0, cover: "test2", synopsis: "test2", quantity: 1)]
 
-        DiscountService().getDiscount(books: books, callback: { (success, offers) in
+        DiscountService().getDiscount(books: books, completion: { (success, offers) in
             XCTAssertFalse(success)
             XCTAssertNil(offers)
             expec.fulfill()
@@ -80,7 +80,7 @@ class DiscountServiceTests: XCTestCase {
         let books = [Book(isbn: "test1", title: "test1", price: 0, cover: "test1", synopsis: "test1", quantity: 1),
                      Book(isbn: "test2", title: "test2", price: 0, cover: "test2", synopsis: "test2", quantity: 1)]
 
-        DiscountService().getDiscount(books: books, callback: { (success, offers) in
+        DiscountService().getDiscount(books: books, completion: { (success, offers) in
             XCTAssertFalse(success)
             XCTAssertNil(offers)
             expec.fulfill()

@@ -23,12 +23,20 @@ enum DiscountType: String, Codable {
     case percentage, minus, slice
 }
 
+enum DiscountError: Error {
+    case noDataAvailable
+    case cantDecodeData
+    case emptyParameter
+}
+
+
 class DiscountService {
     //Request to Henri Potier API, to retrieve discount data
-    func getDiscount(books: [Book], callback: @escaping (Bool, [DiscountData]?) -> Void) {
+    func getDiscount(books: [Book],
+                     completion: @escaping (Swift.Result<[DiscountData], DiscountError>) -> Void) {
         //if there are no books, can't fetch a discount
         guard !books.isEmpty else {
-            callback(false, nil)
+            completion(.failure(.emptyParameter))
             return
         }
 
@@ -55,18 +63,18 @@ class DiscountService {
             .responseJSON { response in
                 //Check if request was successful and data not empty
                 guard response.result.isSuccess, let data = response.data else {
-                    callback(false, nil)
+                    completion(.failure(.noDataAvailable))
                     return
                 }
 
                 //Try to parse data into JSON
                 guard let responseJSON = try? JSONDecoder().decode(DiscountRequest.self, from: data) else {
-                    callback(false, nil)
+                    completion(.failure(.cantDecodeData))
                     return
                 }
 
                 //If everything is OK, callback with success and data
-                callback(true, responseJSON.offers)
+                completion(.success(responseJSON.offers))
         }
     }
 }

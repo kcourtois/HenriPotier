@@ -19,20 +19,21 @@ class DiscountCalculator {
     //Apply all the available discounts, and gives the lowest price on completion
     func applyDiscount(books: [Book], completion: @escaping (Float) -> Void) {
         //check available discounts
-        discountService.getDiscount(books: books) { (success, result) in
-            //check if call was successful, if not, calls completion with total price of the books
-            guard let offers = result, success else {
+        discountService.getDiscount(books: books) { result in
+            switch result {
+            case .failure:
+                //in case of failure, completion with total price of the books
                 completion(self.initialPrice(books: books))
                 return
-            }
-
-            //final price is minimum value in the array of prices
-            if let finalPrice = self.getLoweredPrices(offers: offers, books: books).min() {
-                //completion called with best price
-                completion(finalPrice)
-            } else {
-                //if finalPrice not set, complete with initialPrice
-                completion(self.initialPrice(books: books))
+            case .success(let offers):
+                //final price is minimum value in the array of prices
+                if let finalPrice = self.getLoweredPrices(offers: offers, books: books).min() {
+                    //completion called with best price
+                    completion(finalPrice)
+                } else {
+                    //if finalPrice not set, complete with initialPrice
+                    completion(self.initialPrice(books: books))
+                }
             }
         }
     }

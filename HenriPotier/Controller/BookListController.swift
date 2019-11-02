@@ -18,12 +18,14 @@ class BookListController: UIViewController {
         super.viewDidLoad()
         //puts uiview instead of empty cells at the end of the tableview
         tableView.tableFooterView = UIView()
-        BookService().getBooks(callback: { (success, result) in
-            guard let res = result, success else {
+        BookService().getBooks(completion: { result in
+            switch result {
+            case .failure:
                 return
+            case .success(let res):
+                self.books = res
+                self.tableView.reloadData()
             }
-            self.books = res
-            self.tableView.reloadData()
         })
     }
 
