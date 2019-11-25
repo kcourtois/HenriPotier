@@ -29,7 +29,6 @@ enum DiscountError: Error {
     case emptyParameter
 }
 
-
 class DiscountService {
     //Request to Henri Potier API, to retrieve discount data
     func getDiscount(books: [Book],

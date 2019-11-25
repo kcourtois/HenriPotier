@@ -20,7 +20,8 @@ class BookListController: UIViewController {
         tableView.tableFooterView = UIView()
         BookService().getBooks(completion: { result in
             switch result {
-            case .failure:
+            case .failure(let error):
+                print(error)
                 return
             case .success(let res):
                 self.books = res

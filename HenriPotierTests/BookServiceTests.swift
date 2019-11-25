@@ -24,12 +24,15 @@ class BookServiceTests: XCTestCase {
 
         let expec = expectation(description: "Alamofire")
 
-        BookService().getBooks { (success, books) in
-            XCTAssertTrue(success)
-            XCTAssertNotNil(books)
-            XCTAssertEqual(books?.count, 7)
+        BookService().getBooks(completion: { result in
+            switch result {
+            case .failure:
+                XCTAssertTrue(false)
+            case .success(let books):
+                XCTAssertEqual(books.count, 7)
+            }
             expec.fulfill()
-        }
+        })
 
         wait(for: [expec], timeout: 1)
     }
@@ -40,11 +43,15 @@ class BookServiceTests: XCTestCase {
 
         let expec = expectation(description: "Alamofire")
 
-        BookService().getBooks { (success, books) in
-            XCTAssertFalse(success)
-            XCTAssertNil(books)
+        BookService().getBooks(completion: { result in
+            switch result {
+            case .failure(let error):
+                XCTAssertEqual(error, .noDataAvailable)
+            case .success:
+                XCTAssertTrue(false)
+            }
             expec.fulfill()
-        }
+        })
 
         wait(for: [expec], timeout: 1)
     }
@@ -57,11 +64,15 @@ class BookServiceTests: XCTestCase {
 
         let expec = expectation(description: "Alamofire")
 
-        BookService().getBooks { (success, books) in
-            XCTAssertFalse(success)
-            XCTAssertNil(books)
+        BookService().getBooks(completion: { result in
+            switch result {
+            case .failure(let error):
+                XCTAssertEqual(error, .cantDecodeData)
+            case .success:
+                XCTAssertTrue(false)
+            }
             expec.fulfill()
-        }
+        })
 
         wait(for: [expec], timeout: 1)
     }
